@@ -67,7 +67,7 @@ Example of response:
             }
         }
     }
-}```
+}
 ````
 
 ## **Quick Start**
