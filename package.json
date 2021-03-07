@@ -2,7 +2,7 @@
   "name": "cryptocompare-microservice",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "start:dev": "cross-env NODE_ENV=dev DB_HOST=localhost DB_PORT=7777 DB_USER=root DB_PASSWORD=toor DB_DATABASE=test node .",
     "test": "echo \"Error: no test specified\" && exit 1"
