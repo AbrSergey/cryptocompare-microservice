@@ -81,7 +81,7 @@ Example of response:
 
 5. Change info for db migration inside `config/config.json` and run command:
 
-`npx sequelize-client db:migrate`
+`npx sequelize-cli db:migrate`
 
 6. Run command. You must replace `{DB_PORT}`, `{DB_USER}`, `{DB_PASSWORD}`, `{DB_NAME}` with you own values.
 
@@ -110,7 +110,7 @@ After installed click to extension and inside of it connect to url:
 
 ## **Additional settings**
 
-You can launch project with `NODE_ENV=dev` or `NODE_ENV=prod`. In `dev`mode app will be logging overabundant logs.
+You can launch project with `NODE_ENV=dev` or `NODE_ENV=prod`. In `dev`mode app will be logging overabundant logs and in case of error will return `err.stack`.
 
 Inside `src/config/index.js` you can change settings.
 
