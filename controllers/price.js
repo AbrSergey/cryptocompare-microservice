@@ -1,4 +1,4 @@
-const cryptocompare = require('../modules/cryptocompare');
+const cryptocompare = require('../services/cryptocompare');
 const { InvalidDataError } = require('../errorTypes');
 
 module.exports.get = async (req, res, next) => {

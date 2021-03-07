@@ -7,14 +7,17 @@ const config = {
     url: 'https://min-api.cryptocompare.com/data/pricemultifull',
     fsyms: ['BTC', 'XRP', 'ETH', 'BCH', 'EOS', 'LTC', 'XMR', 'DASH'],
     tsyms: ['USD', 'EUR', 'GBP', 'JPY', 'RUR']
+  },
+  cron: {
+    period: '*/5 * * * * *' // every five seconds
+  },
+  db: {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
   }
-  // db: {
-  //   host: process.env.DB_HOST,
-  //   port: process.env.DB_PORT,
-  //   user: process.env.DB_USER,
-  //   password: process.env.DB_PASSWORD,
-  //   database: process.env.DB_DATABASE
-  // }
 };
 
 Object.keys(config).forEach((type) => {

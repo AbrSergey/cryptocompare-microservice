@@ -1,10 +1,23 @@
 const express = require('express');
+const cron = require('node-cron');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const router = require('./routes');
 const { errorHandler } = require('./middleware');
+const logger = require('./helpers/logger');
 const { port } = require('./config').app;
+const { period } = require('./config').cron;
+const cronTask = require('./cronTask');
+
+if (cron.validate(period)) {
+  cron.schedule(period, () => {
+    cronTask();
+  });
+}
+else {
+  logger.error(`invalid period for cron task = "${period}"`);
+}
 
 const app = express();
 
