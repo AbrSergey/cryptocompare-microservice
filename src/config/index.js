@@ -1,6 +1,7 @@
 const config = {
   app: {
     port: 8080,
+    socketPort: 8000,
     stage: process.env.NODE_ENV || 'dev'
   },
   cryptocompare: {

@@ -9,10 +9,12 @@ const logger = require('./helpers/logger');
 const { port } = require('./config').app;
 const { period } = require('./config').cron;
 const cronTask = require('./cronTask');
+const { clients } = require('./sockets');
 
+// cron task
 if (cron.validate(period)) {
   cron.schedule(period, () => {
-    cronTask();
+    cronTask(clients);
   });
 }
 else {
@@ -29,6 +31,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api', router);
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`Server listening port ${port}`));
+app.listen(port, () => logger.info(`Server listening port ${port}`));
 
 module.exports = app;
