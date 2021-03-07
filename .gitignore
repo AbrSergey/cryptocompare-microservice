@@ -1,0 +1,10 @@
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+#vscode
+.vscode
+
+node_modules/
