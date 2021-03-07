@@ -28,7 +28,7 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use('/api', router);
+app.use('/service', router);
 app.use(errorHandler);
 
 app.listen(port, () => logger.info(`Server listening port ${port}`));

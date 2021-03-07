@@ -3,11 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
-  "engines": {
-    "node": "12.18.3"
-  },
   "scripts": {
-    "start": "cross-env NODE_ENV=dev DB_HOST=localhost DB_PORT=7777 DB_USER=root DB_PASSWORD=toor DB_DATABASE=test node .",
+    "start:dev": "cross-env NODE_ENV=dev DB_HOST=localhost DB_PORT=7777 DB_USER=root DB_PASSWORD=toor DB_DATABASE=test node .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,7 +23,8 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "jsdoc": "^3.6.6",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "sequelize-cli": "^6.2.0"
   },
   "dependencies": {
     "axios": "^0.21.1",

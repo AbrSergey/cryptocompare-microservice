@@ -6,21 +6,5 @@
     "host": "127.0.0.1",
     "port": 7777,
     "dialect": "postgres"
-  },
-  "test": {
-    "username": "root",
-    "password": "toor",
-    "database": "test",
-    "host": "127.0.0.1",
-    "port": 7777,
-    "dialect": "postgres"
-  },
-  "production": {
-    "username": "root",
-    "password": "toor",
-    "database": "test",
-    "host": "127.0.0.1",
-    "port": 7777,
-    "dialect": "postgres"
   }
 }
