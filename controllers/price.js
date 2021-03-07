@@ -13,15 +13,12 @@ module.exports.get = async (req, res, next) => {
       throw new InvalidDataError('require tsyms in query');
     }
 
-    console.log(fsyms.split(','));
-    console.log(tsyms.split(','));
-
     const data = await cryptocompare.fetch({
       fsyms: fsyms.split(','),
       tsyms: tsyms.split(',')
     });
 
-    res.status(200).json({ data });
+    res.status(200).json({ ...data });
   }
   catch (err) {
     next(err);

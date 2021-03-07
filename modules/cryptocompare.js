@@ -46,7 +46,66 @@ module.exports.fetch = async ({ fsyms, tsyms }) => {
       }
     });
 
-    return data;
+    if (!data || !data.RAW || !data.DISPLAY) {
+      throw new InternalError('response data from cryptocompare not exists');
+    }
+
+    let raw = {};
+    let display = {};
+
+    fsyms.forEach((fsym) => {
+      tsyms.forEach((tsym) => {
+        raw = {
+          ...raw,
+          [fsym]: {
+            ...raw[fsym],
+            [tsym]: {
+              CHANGE24HOUR: data.RAW[fsym][tsym].CHANGE24HOUR,
+              CHANGEPCT24HOUR: data.RAW[fsym][tsym].CHANGEPCT24HOUR,
+              OPEN24HOUR: data.RAW[fsym][tsym].OPEN24HOUR,
+              VOLUME24HOUR: data.RAW[fsym][tsym].VOLUME24HOUR,
+              VOLUME24HOURTO: data.RAW[fsym][tsym].VOLUME24HOURTO,
+              LOW24HOUR: data.RAW[fsym][tsym].LOW24HOUR,
+              HIGH24HOUR: data.RAW[fsym][tsym].HIGH24HOUR,
+              PRICE: data.RAW[fsym][tsym].PRICE,
+              LASTUPDATE: data.RAW[fsym][tsym].LASTUPDATE,
+              SUPPLY: data.RAW[fsym][tsym].SUPPLY,
+              MKTCAP: data.RAW[fsym][tsym].MKTCAP
+            }
+          }
+        };
+      });
+    });
+
+    fsyms.forEach((fsym) => {
+      tsyms.forEach((tsym) => {
+        display = {
+          ...display,
+          [fsym]: {
+            ...display[fsym],
+            [tsym]: {
+              CHANGE24HOUR: data.RAW[fsym][tsym].CHANGE24HOUR,
+              CHANGEPCT24HOUR: data.RAW[fsym][tsym].CHANGEPCT24HOUR,
+              OPEN24HOUR: data.RAW[fsym][tsym].OPEN24HOUR,
+              VOLUME24HOUR: data.RAW[fsym][tsym].VOLUME24HOUR,
+              VOLUME24HOURTO: data.RAW[fsym][tsym].VOLUME24HOURTO,
+              HIGH24HOUR: data.RAW[fsym][tsym].HIGH24HOUR,
+              PRICE: data.RAW[fsym][tsym].PRICE,
+              FROMSYMBOL: data.RAW[fsym][tsym].FROMSYMBOL,
+              TOSYMBOL: data.RAW[fsym][tsym].TOSYMBOL,
+              LASTUPDATE: data.RAW[fsym][tsym].LASTUPDATE,
+              SUPPLY: data.RAW[fsym][tsym].SUPPLY,
+              MKTCAP: data.RAW[fsym][tsym].MKTCAP
+            }
+          }
+        };
+      });
+    });
+
+    return {
+      RAW: raw,
+      DISPLAY: display
+    };
   }
   catch (err) {
     logger.error(`error from cryptocompare module. err.stack = ${err.stack}`);
